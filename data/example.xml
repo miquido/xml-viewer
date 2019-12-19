@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<note>
+  <to foo="bar" baz="test" id="1">Billy Corgan</to>
+  <from test="baz">Smashing Pumpkins</from>
+  <heading>
+    <h1>Bullet With Butterfly Wings</h1>
+    <h2>
+      <!-- Captain -->
+      Fantastic
+    </h2>
+    <h3>
+      <!-- Comment -->
+      Hello,
+      World!
+      <additional-content id="2" color="red">Shiny and oh so bright</additional-content>
+      Outside of the element
+      <foo>bar</foo>
+      Outside of the element 2
+      <cdata><![CDATA[
+        Mellon Collie<br/>
+        <additional-content id="3" color="red">Infinite Sadness</additional-content>
+      ]]></cdata>
+      Outside of the element 3
+    </h3>
+    <h4>
+    </h4>
+  </heading>
+  <body>Disarm you with a smile</body>
+</note>
