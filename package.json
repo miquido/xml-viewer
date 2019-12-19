@@ -1,0 +1,32 @@
+{
+  "name": "xml-viewer",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "grunt serve",
+    "build": "grunt build",
+    "format:scripts": "prettier --config ./.prettierrc --list-different \"src/**/*.{js,json}\"",
+    "format:all": "npm run format:scripts -- --write && npm run format:styles",
+    "format:fix": "pretty-quick --staged --no-restage",
+    "format:styles": "csscomb src/"
+  },
+  "description": "Plugin for preview XML files",
+  "dependencies": {
+    "husky": "3.0.9"
+  },
+  "devDependencies": {
+    "grunt": "^1.0.4",
+    "grunt-browser-sync": "^2.2.0",
+    "grunt-contrib-cssmin": "^3.0.0",
+    "grunt-contrib-uglify": "^4.0.1",
+    "grunt-contrib-uglify-es": "github:gruntjs/grunt-contrib-uglify#harmony",
+    "grunt-contrib-watch": "^1.1.0",
+    "prettier": "1.19.1",
+    "pretty-quick": "2.0.1",
+    "csscomb": "^4.3.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run format:fix"
+    }
+  }
+}
