@@ -4,14 +4,12 @@
   padding: 5px 5px 5px 80px;
   overflow: auto;
 
-  color: #fff;
   font-family: 'Arial', sans-serif;
   font-size: 16px;
   font-weight: 300;
   white-space: nowrap;
 
-  background: #272822;
-  border: 2px solid #3b3a32;
+  border: 2px solid transparent;
 }
 
 .xml-code:after {
@@ -23,7 +21,7 @@
 
   height: 100%;
 
-  border-right: 1px solid #333;
+  border-right: 1px solid transparent;
 }
 
 .line-number {
@@ -33,7 +31,6 @@
   width: 50px;
   padding-right: 10px;
 
-  color: #aaa;
   font-family: 'Courier New', 'Courier', monospace;
   text-align: right;
 }
@@ -45,7 +42,7 @@
   margin-left: 15px;
   margin-bottom: 5px;
 
-  border-left: 1px solid #3b3a32;
+  border-left: 1px solid transparent;
 }
 
 .tag.tag-empty {
@@ -62,21 +59,11 @@
 }
 
 .tag-name {
-  color: #e72672;
   font-weight: 600;
 }
 
 .attribute-name {
-  color: #a6e22b;
   font-weight: 600;
-}
-
-.attribute-equal-char {
-  color: #e72672;
-}
-
-.attribute-value {
-  color: #e6db67;
 }
 
 .text-content {
@@ -93,8 +80,6 @@
   margin-top: 5px;
   margin-left: 15px;
   margin-bottom: 5px;
-
-  color: #777;
 }
 
 .expand {
@@ -111,8 +96,7 @@
   line-height: 16px;
   text-align: center;
 
-  background: #272822;
-  border: 1px solid #3b3a32;
+  border: 1px solid transparent;
   border-radius: 3px;
   cursor: pointer;
   vertical-align: top;

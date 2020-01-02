@@ -1,0 +1,43 @@
+.xml-code {
+  color: #000;
+
+  background-color: #fff;
+  border-color: #d0d0d0;
+}
+
+.xml-code:after {
+  border-color: #d0d0d0;
+}
+
+.line-number {
+  color: #999;
+}
+
+.tag {
+  border-color: #000;
+}
+
+.tag-name {
+  color: #000080;
+}
+
+.attribute-name {
+  color: #00f;
+}
+
+.attribute-equal-char {
+  color: #00f;
+}
+
+.attribute-value {
+  color: #008000;
+}
+
+.comment-content {
+  color: #808080;
+}
+
+.expand {
+  background: #fff;
+  border-color: #d0d0d0;
+}
