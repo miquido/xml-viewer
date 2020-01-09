@@ -3,17 +3,20 @@
 
   const WHITE_CHARS_REGEX = /\S/;
   const ELEMENT_NODE = 1;
+  const TEXT_NODE = 3;
   const COMMENT_NODE = 8;
   const ALT_BUTTON_CODE = 18;
 
   class xmlViewerPlugin {
-    constructor(containerId, url, numberOfNodesToShow) {
+    constructor(containerId, url, numberOfNodesToShow, searchInputId) {
       this.containerId = containerId;
       this.container = document.getElementById(this.containerId);
       this.url = url;
       this.nodeLevelCounter = 0;
       this.numberOfNodesToShow = numberOfNodesToShow;
       this.buttonIsKeyDown = false;
+      this.searchInputId = searchInputId;
+      this.initializeSearch();
       this.load();
     }
 
@@ -43,7 +46,10 @@
         element.className = className;
       }
       if (text) {
-        element.appendChild(document.createTextNode(text));
+        const textSpan = document.createElement(type);
+        textSpan.className = 'text';
+        textSpan.appendChild(document.createTextNode(text));
+        element.appendChild(textSpan);
       }
       if (id) {
         element.id = id;
@@ -247,7 +253,75 @@
         });
       }
     }
-  }
 
+    initializeSearch() {
+      const searchInput = document.querySelector(`#${this.searchInputId}`);
+      if (searchInput) {
+        searchInput.addEventListener('input', event => {
+          this.clearDocumentFromSearchNodes(this.container.firstChild);
+          const phrase = event.target.value.toLowerCase();
+          this.searchPhrase(phrase, this.container.firstChild);
+        });
+      }
+    }
+
+    clearDocumentFromSearchNodes(basicNode) {
+      if (!basicNode) return;
+      for (let node = basicNode.firstChild; node; node = node.nextSibling) {
+        if (node.nodeType === TEXT_NODE) {
+          this.clearSpecificTextNode(node);
+        } else {
+          this.clearDocumentFromSearchNodes(node);
+        }
+      }
+    }
+
+    clearSpecificTextNode(node) {
+      const nodeToRemoveParent = this.findAncestor(
+        node,
+        '.text-content, .opening-tag, .closing-tag, .comment-content'
+      );
+      const nodeToRemove = nodeToRemoveParent
+        ? nodeToRemoveParent.querySelector('.search-phrase')
+        : null;
+      if (nodeToRemove) nodeToRemove.remove();
+    }
+
+    searchPhrase(text, basicNode) {
+      if (!basicNode) return;
+      for (let node = basicNode.firstChild; node; node = node.nextSibling) {
+        if (node.nodeType === TEXT_NODE) {
+          this.searchSpecificTextNode(text, node);
+        } else if (
+          !node.classList.contains('opening') &&
+          !node.classList.contains('closing')
+        ) {
+          this.searchPhrase(text, node);
+        }
+      }
+    }
+
+    searchSpecificTextNode(text, node) {
+      if (text && node.textContent.toLowerCase().includes(text)) {
+        const container = this.findAncestor(
+          node,
+          '.text-content, .opening-tag, .closing-tag, .comment-content'
+        );
+        container.prepend(this.prepareSearchNode());
+      }
+    }
+
+    findAncestor(el, sel) {
+      while (
+        (el = el.parentElement) &&
+        !(el.matches || el.matchesSelector).call(el, sel)
+      );
+      return el;
+    }
+
+    prepareSearchNode() {
+      return this.createHTMLElement('span', 'search-phrase');
+    }
+  }
   global.xmlViewerPlugin = xmlViewerPlugin;
 })(window);

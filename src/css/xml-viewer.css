@@ -74,6 +74,12 @@
   margin-bottom: 5px;
 }
 
+.text,
+.tag-name,
+.attributes {
+  position: relative;
+}
+
 .comment-content {
   display: block;
   padding-left: 15px;
@@ -82,10 +88,15 @@
   margin-bottom: 5px;
 }
 
+.comment {
+  position: relative;
+}
+
 .expand {
   position: relative;
   top: 0;
   left: -24px;
+  z-index: 1;
 
   display: inline-block;
   height: 16px;
@@ -117,4 +128,14 @@
 
 .expand.expanded .off {
   display: block;
+}
+
+.search-phrase {
+  position: absolute;
+  left: 0;
+
+  height: 18px;
+  width: 100%;
+
+  background: #3b3539;
 }
