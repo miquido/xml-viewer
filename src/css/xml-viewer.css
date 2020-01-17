@@ -94,9 +94,9 @@
 
 .expand {
   position: relative;
+  z-index: 1;
   top: 0;
   left: -24px;
-  z-index: 1;
 
   display: inline-block;
   height: 16px;
@@ -136,6 +136,4 @@
 
   height: 18px;
   width: 100%;
-
-  background: #3b3539;
 }

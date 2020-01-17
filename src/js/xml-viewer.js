@@ -294,7 +294,8 @@
           this.searchSpecificTextNode(text, node);
         } else if (
           !node.classList.contains('opening') &&
-          !node.classList.contains('closing')
+          !node.classList.contains('closing') &&
+          !node.classList.contains('line-number')
         ) {
           this.searchPhrase(text, node);
         }
