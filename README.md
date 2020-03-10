@@ -21,15 +21,17 @@ new xmlParserPlugin(containerId, url, numberOfNodesToShow);
 
 **numberOfNodesToShow** - number of nodes that will be expanded at initialization
 
+**searchInputId** - search input id
+
 ## Example usage
 ```javascript
-new xmlParserPlugin('foo', 'data/example.xml', 3);
+new xmlViewerPlugin('foo', 'data/example.xml', 3, , 'search-input');
 ```
  ## Initialization
  ```sh
  npm start
  ```
- 
+
  ## Build
   ```sh
  npm build
