@@ -16,7 +16,9 @@
       this.numberOfNodesToShow = numberOfNodesToShow;
       this.buttonIsKeyDown = false;
       this.searchInputId = searchInputId;
-      this.initializeSearch();
+      if (this.searchInputId) {
+        this.initializeSearch();
+      }
       this.load();
     }
 

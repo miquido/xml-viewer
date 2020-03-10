@@ -3,6 +3,7 @@
 Render and preview XML file in browser.
 
 ## Features:
+
 - Pure JavaScript
 - Ultra light
 - Ultra fast
@@ -12,27 +13,33 @@ Render and preview XML file in browser.
 - Line numbers display
 
 ## Configuration
+
 ```javascript
-new xmlParserPlugin(containerId, url, numberOfNodesToShow);
+new xmlViewerPlugin(containerId, url, numberOfNodesToShow, searchInputId);
 ```
+
 **containerId** - id of the HTML element where XML preview should be appended
 
 **url** - path to XML file to preview
 
 **numberOfNodesToShow** - number of nodes that will be expanded at initialization
 
-**searchInputId** - search input id
+**searchInputId** - search input id (optional)
 
 ## Example usage
+
 ```javascript
 new xmlViewerPlugin('foo', 'data/example.xml', 3, , 'search-input');
 ```
- ## Initialization
- ```sh
- npm start
- ```
 
- ## Build
-  ```sh
- npm build
- ```
+## Initialization
+
+```sh
+npm start
+```
+
+## Build
+
+```sh
+npm build
+```
